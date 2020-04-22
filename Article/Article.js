@@ -123,59 +123,65 @@ const data = [
     <span class='expandButton'></span>
   </div> */}
 
-function articleComponentCreator(title, date, firstParagraph, secondParagraph, thirdParagraph){
+const articles = document.querySelector(".articles");
 
-  const article = document.createElement("div");
+function articleComponentCreator(object){
+
+  let article = document.createElement("div");
   article.classList.add("article");
+  articles.appendChild(article);
 
   const articleTitle = document.createElement("h2");
-  title.textContent = title;
+  articleTitle.textContent = object.title;
+  article.appendChild(articleTitle);
 
   const articleDate = document.createElement("p");
-  date.classList.add("date");
-  data.textContent = date;
+  articleDate.classList.add("date");
+  articleDate.textContent = object.date;
+  article.appendChild(articleDate);
 
   const p1 = document.createElement("p");
-  p1.textContent = firstParagraph;
+  p1.textContent = object.firstParagraph;
+  article.appendChild(p1);
 
   const p2 = document.createElement("p");
-  p2.textContent = secondParagraph;
+  p2.textContent = object.secondParagraph;
+  article.appendChild(p2);
 
   const p3 = document.createElement("p");
-  p3.textContent = thirdParagraph;
+  p3.textContent = object.thirdParagraph;
+  article.appendChild(p3);
 
-  const expButton = document.createElement("span");
-  expButton.classList.add("expBtn-on");
-  expButton.textContent = "Open Article";
+  // const expButton = document.createElement("span");
+  // expButton.classList.add("expBtn-on");
+  // expButton.textContent = "Open Article";
 
-  const closeButton = doccument.createElement("span");
-  closeButton.classList.add('expBtn-off', 'hide-btn')
-  closeButton.textContent = "Close Article";
+  // const closeButton = document.createElement("span");
+  // closeButton.classList.add('expBtn-off', 'hide-btn')
+  // closeButton.textContent = "Close Article";
 
-  date.appendChild(firstParagraph);
-  date.appendChild(secondParagraph);
-  date.appendChild(thirdParagraph);
 
-  article.appendChild(title);
-  article.appendChild(date);
-  article.appendChild(expButton);
+  // article.appendChild(title);
+  // article.appendChild(date);
+  // article.appendChild(expButton);
 
 // Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
 //   expButton.addEventListener("click", (event)=>{
 //   article.classList.toggle("article-open");
 // })
 
-  return article;
-
-
+  // return article;
 }
 
-console.log(articleComponentCreator);
+// data.forEach((panelObj)=> {
+//   const articleComponent = articleComponentCreator(panelObj.title, panelObj.date, panelObj.firstParagraph, panelObj.secondParagraph, panelObj.thirdParagraph);
+//   console.log(articleComponent)
+//   articles.appendCchild(articleComponent);
+// })
 
+data.map(arr => articleComponentCreator(arr));
 
-
-
-
+articleComponentCreator(data);
 
 
 
