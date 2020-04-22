@@ -123,29 +123,17 @@ const data = [
     <span class='expandButton'></span>
   </div> */}
 
-
-function articleComponentCreator(articleInfo){
+function articleComponentCreator(title, date, firstParagraph, secondParagraph, thirdParagraph){
 
   const article = document.createElement("div");
   article.classList.add("article");
 
-  // console.log(article);
+  const articleTitle = document.createElement("h2");
+  title.textContent = title;
 
-  const title = document.createElement("h2");
-  title.textContent = "title of the article";
-
-  // date 
-  const date = document.createElement("p");
+  const articleDate = document.createElement("p");
   date.classList.add("date");
-  data.textContent = "date";
-
-// Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
-  const expButton = document.createElement("span");
-  expButton.classList.add("expandButton");
-  expButton.addEventListener("click", (event)=>{
-    article.classList.toggle("article-open");
-  })
-
+  data.textContent = date;
 
   const p1 = document.createElement("p");
   p1.textContent = firstParagraph;
@@ -156,15 +144,29 @@ function articleComponentCreator(articleInfo){
   const p3 = document.createElement("p");
   p3.textContent = thirdParagraph;
 
-  date.appendChild(p1);
-  date.appendChild(p2);
-  date.appendChild(p3);
+  const expButton = document.createElement("span");
+  expButton.classList.add("expBtn-on");
+  expButton.textContent = "Open Article";
+
+  const closeButton = doccument.createElement("span");
+  closeButton.classList.add('expBtn-off', 'hide-btn')
+  closeButton.textContent = "Close Article";
+
+  date.appendChild(firstParagraph);
+  date.appendChild(secondParagraph);
+  date.appendChild(thirdParagraph);
 
   article.appendChild(title);
   article.appendChild(date);
-  article.appendChild(button);
+  article.appendChild(expButton);
+
+// Step 2: Add an event listener to the expandButton span. This event listener should toggle the class 'article-open' on the 'article' div.
+//   expButton.addEventListener("click", (event)=>{
+//   article.classList.toggle("article-open");
+// })
 
   return article;
+
 
 }
 
